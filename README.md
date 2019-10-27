@@ -4,7 +4,7 @@
 
 **Copy-paste following command in Terminal or SSH console and press Enter key. </br>
 The script will install and configure Adsbexchange data feeder.** </br></br>
-`sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/adsbexchange/master/install-adsbexchange.sh)"` 
+`sudo bash -c "$(wget -O - https://raw.githubusercontent.com/abcd567a/adsbexchange/master/install-adsbexchange.sh)"  ` 
 </br></br></br>
 The script builds and installs mlat-client from source code, and takes some more time to install dependencies and build tools and then takes some times to clone and build mlat-client package. Please be patient, and let the script complete.
 </br>
