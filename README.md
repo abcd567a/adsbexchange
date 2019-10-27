@@ -49,6 +49,16 @@ YOU MUST DO FOLLOWING, ELSE ADSBEXCHANGE's MLAT WILL FAIL:
 ```
 </br>
 
+### LOGS 
+To delete logs, reboot, or restart adsbx-socat and adsbx-mlat </br>
+Logs can be seen here: </br>
+```
+cat /var/log/adsbx-mlat.log
+cat /var/log/adsbx-socat.log
+```
+
+</br>
+
 ## TO UNINSTALL COMPLETELY
 
 ```
