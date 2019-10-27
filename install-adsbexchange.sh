@@ -53,7 +53,7 @@ sudo chmod 777 ${START_SOCAT}
 echo "Writing code to startup file adsbx-socat.sh"
 /bin/cat <<EOM >${START_SOCAT}
 #!/bin/sh
-$SOCAT_PATH -u TCP:localhost:30005 TCP:feed.adsbexchange.com:30005
+${SOCAT_PATH} -u TCP:localhost:30005 TCP:feed.adsbexchange.com:30005  >> /var/log/adsbx-socat.log  2>&1
 EOM
 sudo chmod +x ${START_SOCAT}
 
@@ -68,7 +68,7 @@ echo "Writing code to startup file adsbx-mlat.sh"
 #!/bin/sh
 MLAT_CONF=""
 while read -r line; do MLAT_CONF="\${MLAT_CONF} \$line"; done < ${INSTALL_FOLDER}/adsbx-mlat.conf
-/usr/bin/mlat-client \${MLAT_CONF}
+/usr/bin/mlat-client \${MLAT_CONF} >> /var/log/adsbx-mlat.log  2>&1
 EOM
 sudo chmod +x ${START_MLAT}
 
@@ -104,6 +104,7 @@ After=network.target
 [Service]
 RuntimeDirectory=adsbexchange
 RuntimeDirectoryMode=0755
+ExecStartPre=-/bin/rm /var/log/adsbx-socat.log
 ExecStart=${INSTALL_FOLDER}/adsbx-socat.sh
 SyslogIdentifier=adsbexchange
 Type=simple
@@ -133,6 +134,7 @@ After=network.target
 [Service]
 RuntimeDirectory=adsbexchange
 RuntimeDirectoryMode=0755
+ExecStartPre=-/bin/rm /var/log/adsbx-mlat.log
 ExecStart=${INSTALL_FOLDER}/adsbx-mlat.sh
 SyslogIdentifier=adsbexchange
 Type=simple
