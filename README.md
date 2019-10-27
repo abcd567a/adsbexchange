@@ -49,7 +49,7 @@ YOU MUST DO FOLLOWING, ELSE ADSBEXCHANGE's MLAT WILL FAIL:
 ```
 </br>
 
-## TO UNINSTALL
+## TO UNINSTALL COMPLETELY
 
 ```
 sudo systemctl stop adsbx-mlat 
@@ -60,6 +60,7 @@ sudo systemctl stop adsbx-socat
 sudo systemctl disable adsbx-socat 
 sudo rm /lib/systemd/system/adsbx-socat.service 
 
+sudo dpkg --purge mlat-client
 sudo rm -rf /usr/share/adsbexchange 
 
 ```
